@@ -30,6 +30,7 @@ def checkio(data: str) -> bool:
         return False
     return bool(re.search("[a-z]", data) and re.search("[A-Z]", data) and re.search("[0-9]", data))
 
+
 if __name__ == '__main__':
     # These "asserts" using only for self-checking and not necessary for auto-testing
     assert checkio('A1213pokl') is False, "1st example"
