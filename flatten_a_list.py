@@ -18,10 +18,10 @@ def flat_list(array: list) -> list:
     """ Flatten a list to the one-dimensional list with integers"""
     flatten = []
     for element in array:
-        if isinstance(element, int):
-            flatten.append(element)
-        elif isinstance(element, list):
+        if isinstance(element, list):
             flatten.extend(flat_list(element))
+        else:
+            flatten.append(element)
     return flatten
 
 
