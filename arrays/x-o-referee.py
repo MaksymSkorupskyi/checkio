@@ -121,7 +121,7 @@ def checkio(game_result: List[str]) -> str:
     return 'D'
 
 
-# v4 - str + zip
+# v4 - map(''.join, zip)
 def checkio(game_result: List[str]) -> str:
     """
     Return "X" if the X-player wins and "O" if the O-player wins.
