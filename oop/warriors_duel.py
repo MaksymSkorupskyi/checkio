@@ -30,7 +30,7 @@ class Warrior:
 
     @property
     def is_alive(self) -> bool:
-        """ Warrior is alive if his health is bigger than 0  """
+        """ Warrior is alive if his health is bigger than 0 """
         return self.health > 0
 
 
@@ -50,7 +50,7 @@ def fight(unit_1: Warrior,
     If the first warrior is still alive (and thus the other one is not anymore),
     the function should return True, False otherwise.
     """
-    while unit_1.is_alive and unit_2.is_alive:
+    while unit_1.is_alive:
         unit_2.health -= unit_1.attack
         if not unit_2.is_alive:
             # unit_1 has won!
