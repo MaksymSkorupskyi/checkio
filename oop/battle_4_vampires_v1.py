@@ -68,7 +68,7 @@ class Vampire(Warrior):
     def hit_enemy(self, enemy):
         """ Hit the other unit with attack damage and heal self """
         super().hit_enemy(enemy)
-        self.health += (self.attack - enemy.defense) * 50 / 100
+        self.health += (self.attack - enemy.defense) * self.vampirism / 100
 
 
 class Army:
