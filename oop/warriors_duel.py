@@ -29,7 +29,7 @@ class Warrior:
     attack = 5
 
     @property
-    def is_alive(self):
+    def is_alive(self) -> bool:
         """ Warrior is alive if his health is bigger than 0  """
         return self.health > 0
 
