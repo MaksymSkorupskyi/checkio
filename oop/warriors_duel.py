@@ -1,4 +1,4 @@
-"""One-on-One Duel.
+"""Warriors Duel.
 You need to create the class Warrior, the instances of which will have 2 parameters -
 health (equal to 50 points) and
 attack (equal to 5 points), and
