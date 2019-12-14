@@ -91,6 +91,7 @@ class Battle:
             else:
                 first_army.remove_one_unit()
             if not second_army.units:
+                # the first army has won!
                 return True
         return False
 
