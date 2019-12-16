@@ -17,7 +17,7 @@ Precondition: Text can contain a-z, A-Z and spaces.
 
 def first_word(text: str) -> str:
     """ returns the first word in a given text. """
-    return text.split()[0]
+    return text.split(maxsplit=1)[0]
 
 
 if __name__ == '__main__':
