@@ -23,7 +23,8 @@ API_KEY = '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
 sg = SendGridAPIClient(API_KEY)
 
 
-def send_email(email, name):
+def send_email(email: str,
+               name: str):
     """ Send a welcome email to a user """
     message = Mail(
         from_email='test@example.com',
