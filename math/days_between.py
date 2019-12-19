@@ -35,7 +35,7 @@ def days_diff(first_date: Tuple[int, int, int],
 
 if __name__ == '__main__':
     print("Example:")
-    print(days_diff((2982, 4, 19), (1982, 4, 22)))
+    print(days_diff((2019, 12, 19), (1978, 12, 5)))
 
     # These "asserts" are used for self-checking and not for an auto-testing
     assert days_diff((1982, 4, 19), (1982, 4, 22)) == 3
