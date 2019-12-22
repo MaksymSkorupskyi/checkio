@@ -66,7 +66,7 @@ class Text:
                  text: str = '',
                  font: str = None):
         self.text = text
-        self.set_font(font)
+        self.font = font
 
     def _clear_text(self):
         """ Delete all text """
@@ -74,15 +74,15 @@ class Text:
 
     def _clear_font(self):
         """ Reset font """
-        self.set_font('')
+        self.font = None
 
     def set_font(self, font: str):
         """ sets the chosen font """
-        self.font = f'[{font}]' if font else ''
+        self.font = font
 
     def show(self) -> str:
         """ returns the current text and font (if is was set) """
-        return f'{self.font}{self.text}{self.font}'
+        return f'[{self.font}]{self.text}[{self.font}]' if self.font else self.text
 
     def write(self, new_text: str):
         """ adds new text to the current text """
