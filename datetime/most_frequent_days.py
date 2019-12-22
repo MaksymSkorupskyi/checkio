@@ -15,7 +15,7 @@ most_frequent_days(1167) == ['Sunday']
 
 Preconditions: Year is between 1 and 9999. Week starts with Monday.
 """
-from calendar import isleap, weekday, day_name
+from calendar import day_name, isleap, weekday
 from datetime import date
 from typing import List
 
@@ -62,6 +62,12 @@ def most_frequent_days(year: int) -> List[str]:
     if first_weekday == 6:
         return ['Monday', 'Sunday']  # special case for sunday as week starts from monday
     return [day_name[first_weekday], day_name[first_weekday + 1]]
+
+
+# v4 - calendar: isleap, weekday, day_name (one-liner)
+def most_frequent_days(year: int) -> List[str]:
+    """ The list of most common days sorted by the order of days in a week (from Monday to Sunday) """
+    return [day_name[d] for d in sorted(weekday(year, 1, n) for n in range(1, 2 + isleap(year)))]
 
 
 if __name__ == '__main__':
