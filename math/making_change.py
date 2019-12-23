@@ -41,7 +41,6 @@ def checkio(price: int,
         for d in denominations:
             coins += amount // d
             amount = amount % d
-
         return 0 if amount else coins
 
     denominations.sort(reverse=True)
