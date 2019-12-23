@@ -36,23 +36,17 @@ def checkio(price: int,
 
     def make_change(denominations: List[int]) -> Union[int, None]:
         """ return the number of coins that add up to the price """
-        amount = 0
+        amount = price
         coins = 0
         for d in denominations:
-            if d > price:
-                continue
-            if d == price:
-                return 1
-            while amount < price:
-                if amount + d > price:
-                    break
-                amount += d
-                coins += 1
-                if amount == price:
-                    return coins
-        return 0
+            coins += amount // d
+            amount = amount % d
+
+        return 0 if amount else coins
 
     denominations.sort(reverse=True)
+    # return min(make_change(denominations[i:]) for i, d in enumerate(denominations)) or None
+
     return min(make_change(denominations[i:]) for i, d in enumerate(denominations)) or None
 
 
@@ -62,9 +56,11 @@ if __name__ == '__main__':
     print(checkio(12, [1, 4]))
     print(checkio(12, [1, 4, 5]))
     print(checkio(12, [1, 2, 4, 5, 10]))
+    print(checkio(123456, [1, 6, 7, 456, 678]))
 
     # These "asserts" using only for self-checking and not necessary for auto-testing
     assert checkio(4, [3, 5]) is None
     assert checkio(8, [1, 3, 5]) == 2
     assert checkio(12, [1, 4, 5]) == 3
+    # assert checkio(123456, [1, 6, 7, 456, 678]) == 187
     print('Done')
