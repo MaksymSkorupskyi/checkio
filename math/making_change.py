@@ -29,24 +29,14 @@ Precondition: Inputs are all positive integers.
 from typing import List, Union
 
 
-# v1 - two nested loops O(n^2)
 def checkio(price: int,
             denominations: List[int]) -> Union[int, None]:
     """ return the minimum number of coins that add up to the price """
-
-    def make_change(denominations: List[int]) -> Union[int, None]:
-        """ return the number of coins that add up to the price """
-        amount = price
-        coins = 0
-        for d in denominations:
-            coins += amount // d
-            amount = amount % d
-        return 0 if amount else coins
-
-    denominations.sort(reverse=True)
-    # return min(make_change(denominations[i:]) for i, d in enumerate(denominations)) or None
-
-    return min(make_change(denominations[i:]) for i, d in enumerate(denominations)) or None
+    table = [0] + [price + 1] * price
+    for coin in denominations:
+        for i in range(coin, price + 1):
+            table[i] = min(table[i], table[i - coin] + 1)
+    return table[price] if table[price] <= price else None
 
 
 if __name__ == '__main__':
@@ -61,5 +51,6 @@ if __name__ == '__main__':
     assert checkio(4, [3, 5]) is None
     assert checkio(8, [1, 3, 5]) == 2
     assert checkio(12, [1, 4, 5]) == 3
-    # assert checkio(123456, [1, 6, 7, 456, 678]) == 187
+    assert checkio(12, [1, 2, 4, 5, 10]) == 2
+    assert checkio(123456, [1, 6, 7, 456, 678]) == 187
     print('Done')
