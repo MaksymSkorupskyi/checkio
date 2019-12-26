@@ -58,6 +58,7 @@ all(re.match(r"^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$",d) for d in data))
 all(-1 < int(n) < 256 for n in d.split(".") for d in data)
 len(data) == len(set(data)) and len(data) > 1
 """
+from ipaddress import IPv4Address, IPv4Network
 from typing import List, Iterable
 
 
@@ -92,6 +93,14 @@ def checkio(ip_addresses: List[str]) -> str:
     subnet = len(route)
     route = route.ljust(32, '0')
     return f'{".".join(str(int(route[i:i + 8], base=2)) for i in range(0, 32, 8))}/{subnet}'
+
+
+# v3 - IPv4Address, IPv4Network
+def checkio(data):
+    """ Computing a summary route """
+    ipmin, *_, ipmax = sorted(map(IPv4Address, data))
+    spread = (int(ipmin) ^ int(ipmax)).bit_length()
+    return str(IPv4Network(ipmin).supernet(spread))
 
 
 if __name__ == '__main__':
