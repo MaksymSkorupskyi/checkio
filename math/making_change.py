@@ -33,15 +33,9 @@ def checkio(price: int,
             denominations: List[int]) -> Union[int, None]:
     """ return the minimum number of coins that add up to the price """
     table = [0] + [price + 1] * price
-    print('table:', table, price)
     for coin in denominations:
-        print('coin:', coin)
         for i in range(coin, price + 1):
             table[i] = min(table[i], table[i - coin] + 1)
-            print('table:', table, i)
-    print(f'table[{price}]:', table[price])
-    print()
-
     return table[price] if table[price] <= price else None
 
 
@@ -51,12 +45,12 @@ if __name__ == '__main__':
     print(checkio(12, [1, 4]))
     print(checkio(12, [1, 4, 5]))
     print(checkio(12, [1, 2, 4, 5, 10]))
-    # print(checkio(123456, [1, 6, 7, 456, 678]))
+    print(checkio(123456, [1, 6, 7, 456, 678]))
 
     # These "asserts" using only for self-checking and not necessary for auto-testing
     assert checkio(4, [3, 5]) is None
     assert checkio(8, [1, 3, 5]) == 2
     assert checkio(12, [1, 4, 5]) == 3
     assert checkio(12, [1, 2, 4, 5, 10]) == 2
-    # assert checkio(123456, [1, 6, 7, 456, 678]) == 187
+    assert checkio(123456, [1, 6, 7, 456, 678]) == 187
     print('Done')
