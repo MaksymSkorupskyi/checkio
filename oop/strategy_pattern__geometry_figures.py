@@ -77,6 +77,12 @@ class Parameters:
         return self._figure.volume(self.parameter)
 
 
+"""
+Concrete Figures (Strategies) implement the algorithm while following the base Strategy
+interface. The interface makes them interchangeable in the Context.
+"""
+
+
 class Circle(Figure):
     """ Circle geometry figure """
 
